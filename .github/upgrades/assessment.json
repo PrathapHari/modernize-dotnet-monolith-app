@@ -1,0 +1,573 @@
+{
+  "settings": {
+    "components": {
+      "code": false,
+      "binaries": false
+    },
+    "targetId": "net9.0",
+    "targetDisplayName": ".NETCoreApp,Version=v9.0"
+  },
+  "analysisStartTime": "2026-01-02T21:42:32.018625Z",
+  "analysisEndTime": "2026-01-02T21:42:40.2818809Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 7,
+      "incidents": 19,
+      "effort": 19
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 15,
+        "Optional": 0,
+        "Potential": 4,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 15,
+        "Project": 2,
+        "Feature": 2
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+      "startingProject": true,
+      "issues": 7,
+      "storyPoints": 19,
+      "properties": {
+        "appName": "eShopLite.StoreFx",
+        "projectKind": "Wap",
+        "frameworks": [
+          "net48"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": false,
+        "numberOfFiles": 87,
+        "numberOfCodeFiles": 16,
+        "linesTotal": 97838,
+        "linesOfCode": 512,
+        "totalApiScanned": 0,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "8eda6e3c-ce35-4cd4-84dd-d4a3094beb6b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+              "protected": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+            "protectedSnippet": "Antlr, 3.5.0.2\n\nRecommendation:\n\nRemove Antlr, and replace with new package Antlr4 4.6.6",
+            "label": "Antlr 3.5.0.2",
+            "properties": {
+              "PackageId": "Antlr",
+              "PackageVersion": "3.5.0.2",
+              "PackageNewVersion": null,
+              "PackageReplacements": "Replace with new package Antlr4=4.6.6"
+            }
+          }
+        },
+        {
+          "incidentId": "1694174a-d2ec-4401-8a6a-a601e927f787",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Autofac.Mvc5, 6.1.0\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Autofac.Mvc5, 6.1.0\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Autofac.Mvc5, 6.1.0\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Autofac.Mvc5, 6.1.0\n\nRecommendation:\n\nNo supported version found",
+            "label": "Autofac.Mvc5 6.1.0",
+            "properties": {
+              "PackageId": "Autofac.Mvc5",
+              "PackageVersion": "6.1.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f8705d51-75eb-405a-99b1-df881212b3df",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Mvc, 5.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.Mvc, 5.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.AspNet.Mvc, 5.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.Mvc, 5.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.Mvc 5.3.0",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Mvc",
+              "PackageVersion": "5.3.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "7669d6e0-3579-4772-88ae-9652c2d27931",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Razor, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.Razor, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.AspNet.Razor, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.Razor, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.Razor 3.3.0",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Razor",
+              "PackageVersion": "3.3.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e8572eb2-2f18-414d-802e-075f9aff5294",
+          "ruleId": "NuGet.0001",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+              "protected": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "protectedSnippet": "Microsoft.AspNet.Web.Optimization, 1.1.3\n\nRecommendation:\n\nNo supported version found",
+            "label": "Microsoft.AspNet.Web.Optimization 1.1.3",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.Web.Optimization",
+              "PackageVersion": "1.1.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "20b1fd46-6a67-4c3d-bf94-6988937c0fe9",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNet.WebPages, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.AspNet.WebPages, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.AspNet.WebPages, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.AspNet.WebPages, 3.3.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.AspNet.WebPages 3.3.0",
+            "properties": {
+              "PackageId": "Microsoft.AspNet.WebPages",
+              "PackageVersion": "3.3.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9c939409-a66f-42eb-9a02-440ed935d772",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Bcl.AsyncInterfaces, 9.0.7\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 9.0.11",
+              "protected": "Microsoft.Bcl.AsyncInterfaces, 9.0.7\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 9.0.11"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.Bcl.AsyncInterfaces, 9.0.7\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 9.0.11",
+            "protectedSnippet": "Microsoft.Bcl.AsyncInterfaces, 9.0.7\n\nRecommendation:\n\nRemove Microsoft.Bcl.AsyncInterfaces, and replace with new package Microsoft.Bcl.AsyncInterfaces 9.0.11",
+            "label": "Microsoft.Bcl.AsyncInterfaces 9.0.7",
+            "properties": {
+              "PackageId": "Microsoft.Bcl.AsyncInterfaces",
+              "PackageVersion": "9.0.7",
+              "PackageNewVersion": "9.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d6c25116-8d87-47e8-a862-17877be7f0da",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 4.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 4.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 4.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform, 4.1.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform 4.1.0",
+            "properties": {
+              "PackageId": "Microsoft.CodeDom.Providers.DotNetCompilerPlatform",
+              "PackageVersion": "4.1.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f949cedb-b39c-4fd5-8eb1-1d58823e058e",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Web.Infrastructure, 2.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.Web.Infrastructure, 2.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Microsoft.Web.Infrastructure, 2.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.Web.Infrastructure, 2.0.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.Web.Infrastructure 2.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Web.Infrastructure",
+              "PackageVersion": "2.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "fb30e8da-e688-43e5-bd9f-b87d204241f1",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+              "protected": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 13.0.3\n\nRecommendation:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "label": "Newtonsoft.Json 13.0.3",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "13.0.3",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "cf7b5f6e-bb25-4a46-b170-494effc7beab",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Buffers, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Buffers, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "System.Buffers, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Buffers, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Buffers 4.6.1",
+            "properties": {
+              "PackageId": "System.Buffers",
+              "PackageVersion": "4.6.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "8c641a62-44eb-4680-aa59-8ffaa402a8d8",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Diagnostics.DiagnosticSource, 9.0.7\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 9.0.11",
+              "protected": "System.Diagnostics.DiagnosticSource, 9.0.7\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 9.0.11"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "System.Diagnostics.DiagnosticSource, 9.0.7\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 9.0.11",
+            "protectedSnippet": "System.Diagnostics.DiagnosticSource, 9.0.7\n\nRecommendation:\n\nRemove System.Diagnostics.DiagnosticSource, and replace with new package System.Diagnostics.DiagnosticSource 9.0.11",
+            "label": "System.Diagnostics.DiagnosticSource 9.0.7",
+            "properties": {
+              "PackageId": "System.Diagnostics.DiagnosticSource",
+              "PackageVersion": "9.0.7",
+              "PackageNewVersion": "9.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "27eb5b3f-e822-410b-b536-a0457b51bfc2",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Memory, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Memory, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "System.Memory, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Memory, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Memory 4.6.3",
+            "properties": {
+              "PackageId": "System.Memory",
+              "PackageVersion": "4.6.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6c34d224-73ab-4184-bc48-5ce677edd014",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Numerics.Vectors, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Numerics.Vectors, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "System.Numerics.Vectors, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Numerics.Vectors, 4.6.1\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Numerics.Vectors 4.6.1",
+            "properties": {
+              "PackageId": "System.Numerics.Vectors",
+              "PackageVersion": "4.6.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "cc8444c6-c9b6-419e-a04b-4bd6ea684bf0",
+          "ruleId": "NuGet.0003",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "System.Threading.Tasks.Extensions, 4.6.3\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "System.Threading.Tasks.Extensions 4.6.3",
+            "properties": {
+              "PackageId": "System.Threading.Tasks.Extensions",
+              "PackageVersion": "4.6.3",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "de2eeda9-0b23-470e-ab02-65e77a62311b",
+          "ruleId": "Project.0001",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj"
+          }
+        },
+        {
+          "incidentId": "50ece5e5-7ed1-4c7e-a49f-20d11b1e9111",
+          "ruleId": "Project.0002",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net9.0",
+              "protected": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net9.0"
+            },
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+            "snippet": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net9.0",
+            "protectedSnippet": "Current target framework: .NETFramework,Version=v4.8\nRecommended target framework: net9.0",
+            "properties": {
+              "CurrentTargetFramework": ".NETFramework,Version=v4.8",
+              "RecommendedTargetFramework": "net9.0"
+            }
+          }
+        },
+        {
+          "incidentId": "3b4b4193-aeb2-439c-aca4-a7509d5fe9bb",
+          "ruleId": "Feature.0001",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\Views\\Shared\\_Layout.cshtml"
+          }
+        },
+        {
+          "incidentId": "6710e411-fe21-40b7-a38c-b0f4ba5459fd",
+          "ruleId": "Feature.1000",
+          "projectPath": "src\\eShopLite.StoreFx\\eShopLite.StoreFx.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "src\\eShopLite.StoreFx\\Global.asax.cs"
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0001": {
+      "id": "NuGet.0001",
+      "isFeature": false,
+      "description": "NuGet package is incompatible with selected target framework.\n\nPackage needs to be upgraded to a version supporting selected project target framework. If there no new package versions supporting new target framework, different package needs to be used and all code needs to be upgraded to new API.",
+      "label": "NuGet package is incompatible",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262529",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0003": {
+      "id": "NuGet.0003",
+      "isFeature": false,
+      "description": "NuGet package functionality is included with framework reference.\n\nPackage needs to be removed.",
+      "label": "NuGet package functionality is included with framework reference",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262609",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0001": {
+      "id": "Project.0001",
+      "isFeature": false,
+      "description": "Project file needs to be converted to SDK-style. Modern .NET framework projects require a change in the project file format and use SDK corresponding to project flavor and functionality.",
+      "label": "Project file needs to be converted to SDK-style",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.0001": {
+      "id": "Feature.0001",
+      "isFeature": true,
+      "description": "System.Web.Optimization bundling and minification is not supported in .NET Core and should be replaced with actual html tags pointing to content files.",
+      "label": "System.Web.Optimization bundling and minification is not supported in .NET Core and should be replaced with actual html tags pointing to content files",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    },
+    "Feature.1000": {
+      "id": "Feature.1000",
+      "isFeature": true,
+      "description": "Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs.",
+      "label": "Convert application initialization code from Global.asax.cs to .NET Core and clean up Global.asax.cs",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
