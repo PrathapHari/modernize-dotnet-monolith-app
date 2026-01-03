@@ -1,7 +1,8 @@
 @page "/stores"
-@inject IStoreService StoreService
+@inject StoreInfoApiClient StoreInfoApiClient
 @inject ILogger<Stores> Logger
 @inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
 
 <PageTitle>Store Locations - eShopLite</PageTitle>
 
@@ -202,14 +203,14 @@ else
             errorMessage = null;
             StateHasChanged();
 
-            Logger.LogInformation("Loading stores via Blazor component");
-            stores = (await StoreService.GetStoresAsync()).ToList();
-            Logger.LogInformation("Successfully loaded {Count} stores", stores.Count);
+            Logger.LogInformation("Loading stores from StoreInfo API");
+            stores = (await StoreInfoApiClient.GetStoresAsync()).ToList();
+            Logger.LogInformation("Successfully loaded {Count} stores from API", stores.Count);
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Error loading stores in Blazor component");
-            errorMessage = "Unable to load store locations at this time. Please try again later.";
+            Logger.LogError(ex, "Error loading stores from API");
+            errorMessage = "Unable to load store locations at this time. Please check if the StoreInfo API is running and try again.";
             stores = new List<StoreInfo>();
         }
         finally
@@ -263,7 +264,7 @@ else
     private async Task ViewStoreDetails(StoreInfo store)
     {
         await JSRuntime.InvokeVoidAsync("alert", 
-            $"Store: {store.Name}\nLocation: {store.City}, {store.State}\nHours: {store.Hours}\n\nServices Available:\n Expert Gear Consultation\n Equipment Testing\n Custom Fitting");
+            $"Store: {store.Name}\nLocation: {store.City}, {store.State}\nHours: {store.Hours}\n\nServices Available:\n✓ Expert Gear Consultation\n✓ Equipment Testing\n✓ Custom Fitting");
     }
 }
 

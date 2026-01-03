@@ -1,116 +1,209 @@
-@page "/diagnostics/database-status"
-@using Microsoft.EntityFrameworkCore
-@inject StoreDbContext DbContext
+@page "/diagnostics/api-status"
+@inject ProductApiClient ProductApiClient
+@inject StoreInfoApiClient StoreInfoApiClient
+@inject ILogger<DatabaseStatus> Logger
 @rendermode InteractiveServer
 
-<PageTitle>Database Diagnostics - eShopLite</PageTitle>
+<PageTitle>API Diagnostics - eShopLite</PageTitle>
 
 <div class="container mt-4">
-    <h1>🔍 Database Diagnostics</h1>
+    <h1>🔍 API Diagnostics</h1>
     
     @if (isLoading)
     {
-        <p><em>Loading diagnostic information...</em></p>
+        <div class="text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading diagnostic information...</span>
+            </div>
+            <p class="mt-2"><em>Checking API connectivity...</em></p>
+        </div>
     }
     else
     {
-        <div class="alert alert-info">
-            <h4>Database Status</h4>
-            <p><strong>Products:</strong> @productCount</p>
-            <p><strong>Stores:</strong> @storeCount</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-header @(productsApiStatus ? "bg-success text-white" : "bg-danger text-white")">
+                        <h4>Products API Status</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (productsApiStatus)
+                        {
+                            <p><i class="bi bi-check-circle-fill text-success"></i> <strong>Connected</strong></p>
+                            <p><strong>Products Available:</strong> @productCount</p>
+                            <p><strong>Endpoint:</strong> https://localhost:7001/api/products</p>
+                        }
+                        else
+                        {
+                            <p><i class="bi bi-x-circle-fill text-danger"></i> <strong>Disconnected</strong></p>
+                            <p class="text-danger">@productsApiError</p>
+                            <p class="text-muted"><small>Make sure the Products API is running on port 7001</small></p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-header @(storeInfoApiStatus ? "bg-success text-white" : "bg-danger text-white")">
+                        <h4>StoreInfo API Status</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (storeInfoApiStatus)
+                        {
+                            <p><i class="bi bi-check-circle-fill text-success"></i> <strong>Connected</strong></p>
+                            <p><strong>Stores Available:</strong> @storeCount</p>
+                            <p><strong>Endpoint:</strong> https://localhost:7002/api/stores</p>
+                        }
+                        else
+                        {
+                            <p><i class="bi bi-x-circle-fill text-danger"></i> <strong>Disconnected</strong></p>
+                            <p class="text-danger">@storeInfoApiError</p>
+                            <p class="text-muted"><small>Make sure the StoreInfo API is running on port 7002</small></p>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
 
-        @if (productCount == 0)
+        @if (productsApiStatus && products != null && products.Any())
         {
-            <div class="alert alert-danger">
-                <h4>❌ No Products Found!</h4>
-                <p>The database seeding may have failed. Check the console logs for errors.</p>
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-success">
-                <h4>✅ Database Seeded Successfully!</h4>
+            <h2 class="mt-4">Products from API</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Image URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in products.Take(5))
+                        {
+                            <tr>
+                                <td>@product.Id</td>
+                                <td>@product.Name</td>
+                                <td>@product.Description</td>
+                                <td>$@product.Price.ToString("F2")</td>
+                                <td>@product.ImageUrl</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (products.Count() > 5)
+                {
+                    <p class="text-muted"><small>Showing first 5 of @products.Count() products</small></p>
+                }
             </div>
         }
 
-        <h2>Products in Database</h2>
-        @if (products != null && products.Any())
+        @if (storeInfoApiStatus && stores != null && stores.Any())
         {
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Image URL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var product in products)
-                    {
+            <h2 class="mt-4">Stores from API</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>@product.Id</td>
-                            <td>@product.Name</td>
-                            <td>@product.Description</td>
-                            <td>$@product.Price.ToString("F2")</td>
-                            <td>@product.ImageUrl</td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Hours</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        }
-
-        <h2 class="mt-4">Stores in Database</h2>
-        @if (stores != null && stores.Any())
-        {
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Hours</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var store in stores)
-                    {
-                        <tr>
-                            <td>@store.Id</td>
-                            <td>@store.Name</td>
-                            <td>@store.City</td>
-                            <td>@store.State</td>
-                            <td>@store.Hours</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var store in stores.Take(5))
+                        {
+                            <tr>
+                                <td>@store.Id</td>
+                                <td>@store.Name</td>
+                                <td>@store.City</td>
+                                <td>@store.State</td>
+                                <td>@store.Hours</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (stores.Count() > 5)
+                {
+                    <p class="text-muted"><small>Showing first 5 of @stores.Count() stores</small></p>
+                }
+            </div>
         }
 
         <div class="mt-4">
-            <a href="/" class="btn btn-primary">Back to Home</a>
+            <button class="btn btn-primary" @onclick="RefreshStatus">
+                <i class="bi bi-arrow-clockwise"></i> Refresh Status
+            </button>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
         </div>
     }
 </div>
 
 @code {
     private bool isLoading = true;
+    private bool productsApiStatus = false;
+    private bool storeInfoApiStatus = false;
     private int productCount;
     private int storeCount;
     private List<Product>? products;
     private List<StoreInfo>? stores;
+    private string? productsApiError;
+    private string? storeInfoApiError;
 
     protected override async Task OnInitializedAsync()
     {
-        productCount = await DbContext.Products.CountAsync();
-        storeCount = await DbContext.Stores.CountAsync();
+        await CheckApiStatus();
+    }
 
-        products = await DbContext.Products.ToListAsync();
-        stores = await DbContext.Stores.ToListAsync();
+    private async Task CheckApiStatus()
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        // Check Products API
+        try
+        {
+            Logger.LogInformation("Checking Products API status");
+            products = (await ProductApiClient.GetProductsAsync()).ToList();
+            productCount = products.Count;
+            productsApiStatus = true;
+            productsApiError = null;
+            Logger.LogInformation("Products API is accessible: {Count} products", productCount);
+        }
+        catch (Exception ex)
+        {
+            productsApiStatus = false;
+            productsApiError = ex.Message;
+            Logger.LogError(ex, "Products API is not accessible");
+        }
+
+        // Check StoreInfo API
+        try
+        {
+            Logger.LogInformation("Checking StoreInfo API status");
+            stores = (await StoreInfoApiClient.GetStoresAsync()).ToList();
+            storeCount = stores.Count;
+            storeInfoApiStatus = true;
+            storeInfoApiError = null;
+            Logger.LogInformation("StoreInfo API is accessible: {Count} stores", storeCount);
+        }
+        catch (Exception ex)
+        {
+            storeInfoApiStatus = false;
+            storeInfoApiError = ex.Message;
+            Logger.LogError(ex, "StoreInfo API is not accessible");
+        }
 
         isLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task RefreshStatus()
+    {
+        await CheckApiStatus();
     }
 }

@@ -1,5 +1,5 @@
 @page "/products"
-@inject IProductService ProductService
+@inject ProductApiClient ProductApiClient
 @inject ILogger<Products> Logger
 @rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
@@ -202,14 +202,14 @@ else
             errorMessage = null;
             StateHasChanged();
 
-            Logger.LogInformation("Loading products via Blazor component");
-            products = (await ProductService.GetProductsAsync()).ToList();
-            Logger.LogInformation("Successfully loaded {Count} products", products.Count);
+            Logger.LogInformation("Loading products from Products API");
+            products = (await ProductApiClient.GetProductsAsync()).ToList();
+            Logger.LogInformation("Successfully loaded {Count} products from API", products.Count);
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Error loading products in Blazor component");
-            errorMessage = "Unable to load products at this time. Please try again later.";
+            Logger.LogError(ex, "Error loading products from API");
+            errorMessage = "Unable to load products at this time. Please check if the Products API is running and try again.";
             products = new List<Product>();
         }
         finally

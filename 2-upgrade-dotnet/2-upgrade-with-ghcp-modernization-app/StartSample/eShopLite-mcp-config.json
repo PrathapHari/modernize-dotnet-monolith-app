@@ -1,0 +1,125 @@
+{
+  "mcpServers": {
+    "azure": {
+      "type": "azure",
+      "enabled": true,
+      "description": "Access Azure resources for deployment",
+      "configuration": {
+        "subscriptionId": "${AZURE_SUBSCRIPTION_ID}",
+        "authentication": "azure-cli"
+      }
+    },
+    "sqlite": {
+      "type": "sqlite",
+      "enabled": true,
+      "description": "Query your eShopLite.db database",
+      "configuration": {
+        "databasePath": "./src/eShopLite.StoreFx/eShopLite.db",
+        "readOnly": true
+      }
+    },
+    "github": {
+      "type": "github",
+      "enabled": true,
+      "description": "Access your modernize-dotnet-monolith-app repository",
+      "configuration": {
+        "token": "${GITHUB_TOKEN}",
+        "repositories": [
+          "PrathapHari/modernize-dotnet-monolith-app"
+        ]
+      }
+    },
+    "microsoft-learn": {
+      "type": "stdio",
+      "enabled": true,
+      "description": "Official Microsoft Learn documentation search with semantic search across docs.microsoft.com and learn.microsoft.com",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-microsoft-learn"
+      ],
+      "configuration": {
+        "searchDomains": [
+          "docs.microsoft.com",
+          "learn.microsoft.com"
+        ],
+        "preferredTopics": [
+          ".NET 10",
+          "C# 14",
+          "Blazor",
+          "Entity Framework Core",
+          "ASP.NET Core",
+          "Azure",
+          "Visual Studio"
+        ]
+      }
+    },
+    "sequential-thinking": {
+      "type": "stdio",
+      "enabled": true,
+      "description": "Enable dynamic, adaptive problem-solving through a thinking process with persistent state",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "${workspaceFolder}/.mcp/thoughts:/thoughts",
+        "mcp/sequentialthinking"
+      ],
+      "env": {
+        "THINKING_BUDGET": "20000",
+        "ENABLE_PERSISTED_THINKING": "true",
+        "THOUGHT_DIRECTORY": "/thoughts"
+      }
+    },
+    "microsoft-docs": {
+      "type": "documentation",
+      "enabled": false,
+      "description": "Legacy documentation access (replaced by microsoft-learn)",
+      "configuration": {
+        "sources": [
+          "docs.microsoft.com",
+          "learn.microsoft.com"
+        ],
+        "focus": [
+          ".NET 10",
+          "Blazor",
+          "Entity Framework Core",
+          "ASP.NET Core"
+        ]
+      }
+    },
+    "nuget": {
+      "type": "nuget",
+      "enabled": true,
+      "description": "Query NuGet packages for your project",
+      "configuration": {
+        "sources": [
+          "https://api.nuget.org/v3/index.json"
+        ]
+      }
+    },
+    "bootstrap": {
+      "type": "cdn-library",
+      "enabled": true,
+      "description": "Bootstrap 5 documentation and examples",
+      "configuration": {
+        "library": "bootstrap",
+        "version": "5.3.2"
+      }
+    }
+  },
+  "environment": {
+    "AZURE_SUBSCRIPTION_ID": "your-azure-subscription-id-here",
+    "GITHUB_TOKEN": "your-github-pat-here"
+  },
+  "security": {
+    "encryptSecrets": true,
+    "allowFileSystemAccess": true,
+    "allowNetworkAccess": true
+  },
+  "scripts": {
+    "startAll": "run-all.cmd"
+  }
+}

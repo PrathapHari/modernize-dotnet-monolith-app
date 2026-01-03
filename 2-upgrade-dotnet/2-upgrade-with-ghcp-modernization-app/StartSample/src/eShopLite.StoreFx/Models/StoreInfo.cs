@@ -1,4 +1,4 @@
-namespace eShopLite.StoreFx.Models
+namespace eShopLite.Store.Models
 {
     public class StoreInfo
     {

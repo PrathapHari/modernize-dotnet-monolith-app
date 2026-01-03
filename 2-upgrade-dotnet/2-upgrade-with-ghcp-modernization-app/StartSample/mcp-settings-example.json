@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "azure-mcp": {
+      "type": "azure",
+      "enabled": true,
+      "configuration": {
+        "subscriptionId": "your-subscription-id",
+        "authentication": "azure-cli"
+      }
+    },
+    "custom-api": {
+      "type": "http",
+      "enabled": true,
+      "url": "https://your-api.example.com",
+      "authentication": {
+        "type": "bearer",
+        "token": "your-api-token"
+      }
+    },
+    "database": {
+      "type": "sql",
+      "enabled": false,
+      "connectionString": "Server=localhost;Database=YourDB;Trusted_Connection=True;"
+    }
+  }
+}

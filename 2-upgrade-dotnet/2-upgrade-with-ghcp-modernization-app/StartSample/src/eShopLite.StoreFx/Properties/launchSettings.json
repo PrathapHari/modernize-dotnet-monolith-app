@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "eShopLite.StoreFx": {
+    "eShopLite.Store": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
