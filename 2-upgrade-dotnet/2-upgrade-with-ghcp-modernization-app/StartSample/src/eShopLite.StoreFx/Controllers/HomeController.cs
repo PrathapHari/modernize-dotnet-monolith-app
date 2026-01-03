@@ -1,4 +1,4 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 using eShopLite.StoreFx.Services;
 
@@ -13,12 +13,12 @@ namespace eShopLite.StoreFx.Controllers
             _service = service ?? throw new System.ArgumentNullException(nameof(service));
         }
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Products()
+        public IActionResult Products()
         {
             ViewBag.Message = "This component demonstrates showing products data";
 
@@ -27,7 +27,7 @@ namespace eShopLite.StoreFx.Controllers
             return View(products);
         }
 
-        public ActionResult Stores()
+        public IActionResult Stores()
         {
             ViewBag.Message = "This component demonstrates showing stores data";
 
