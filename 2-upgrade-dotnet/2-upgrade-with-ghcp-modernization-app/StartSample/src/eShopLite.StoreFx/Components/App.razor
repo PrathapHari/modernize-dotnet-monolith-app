@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>eShopLite</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" id="bootstrap-css" />
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css" id="bootstrap-icons-css" />
+    
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/css/site.css" id="site-css" />
+    
+    <HeadOutlet />
+    
+    <!-- CSS Load Verification -->
+    <script>
+        console.log('=== CSS Load Diagnostics ===');
+        console.log('Base URL:', document.baseURI);
+        console.log('Document location:', window.location.href);
+        
+        // Function to check if CSS loaded
+        function checkCssLoaded(id, name) {
+            const link = document.getElementById(id);
+            if (!link) {
+                console.error(`❌ ${name}: Link element not found`);
+                return false;
+            }
+            
+            const href = link.href;
+            console.log(`🔍 ${name}: ${href}`);
+            
+            // Check if stylesheet loaded
+            setTimeout(() => {
+                try {
+                    if (link.sheet && link.sheet.cssRules) {
+                        console.log(`✅ ${name}: Loaded successfully (${link.sheet.cssRules.length} rules)`);
+                    } else if (link.sheet) {
+                        console.log(`⚠️ ${name}: Loaded but cannot access rules (likely CORS or still loading)`);
+                    } else {
+                        console.error(`❌ ${name}: Failed to load`);
+                    }
+                } catch (e) {
+                    console.error(`❌ ${name}: Error checking - ${e.message}`);
+                }
+            }, 1000);
+        }
+        
+        // Wait for DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                checkCssLoaded('bootstrap-css', 'Bootstrap CSS');
+                checkCssLoaded('bootstrap-icons-css', 'Bootstrap Icons');
+                checkCssLoaded('site-css', 'Site CSS');
+            });
+        }
+    </script>
+</head>
+<body>
+    <Routes />
+    
+    <!-- Bootstrap JS -->
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js" id="bootstrap-js"></script>
+    
+    <!-- Blazor Framework -->
+    <script src="_framework/blazor.web.js"></script>
+    
+    <!-- JS Load Verification -->
+    <script>
+        console.log('=== JS Load Diagnostics ===');
+        
+        // Check Bootstrap loaded
+        if (typeof bootstrap !== 'undefined') {
+            console.log('✅ Bootstrap JS: Loaded successfully');
+            console.log('   Bootstrap version:', bootstrap.Alert.VERSION || 'Unknown');
+        } else {
+            console.error('❌ Bootstrap JS: Not loaded');
+        }
+        
+        // Check if jQuery loaded (should NOT be loaded, just checking)
+        if (typeof jQuery !== 'undefined') {
+            console.log('ℹ️ jQuery: Loaded (version ' + jQuery.fn.jquery + ')');
+        }
+        
+        // Log all loaded scripts
+        console.log('Loaded scripts:');
+        document.querySelectorAll('script[src]').forEach(script => {
+            console.log('  - ' + script.src);
+        });
+        
+        // Test Bootstrap functionality
+        setTimeout(() => {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'container';
+            testDiv.style.display = 'none';
+            document.body.appendChild(testDiv);
+            
+            const styles = window.getComputedStyle(testDiv);
+            const hasBootstrapLayout = styles.maxWidth !== 'none' && styles.maxWidth !== '';
+            
+            if (hasBootstrapLayout) {
+                console.log('✅ Bootstrap CSS is ACTIVE and working');
+                console.log('   Container max-width:', styles.maxWidth);
+            } else {
+                console.error('❌ Bootstrap CSS is NOT working (container has no max-width)');
+            }
+            
+            document.body.removeChild(testDiv);
+        }, 1500);
+        
+        console.log('=== End Diagnostics ===');
+    </script>
+</body>
+</html>

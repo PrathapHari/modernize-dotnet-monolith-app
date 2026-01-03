@@ -1,0 +1,116 @@
+@page "/diagnostics/database-status"
+@using Microsoft.EntityFrameworkCore
+@inject StoreDbContext DbContext
+@rendermode InteractiveServer
+
+<PageTitle>Database Diagnostics - eShopLite</PageTitle>
+
+<div class="container mt-4">
+    <h1>🔍 Database Diagnostics</h1>
+    
+    @if (isLoading)
+    {
+        <p><em>Loading diagnostic information...</em></p>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <h4>Database Status</h4>
+            <p><strong>Products:</strong> @productCount</p>
+            <p><strong>Stores:</strong> @storeCount</p>
+        </div>
+
+        @if (productCount == 0)
+        {
+            <div class="alert alert-danger">
+                <h4>❌ No Products Found!</h4>
+                <p>The database seeding may have failed. Check the console logs for errors.</p>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                <h4>✅ Database Seeded Successfully!</h4>
+            </div>
+        }
+
+        <h2>Products in Database</h2>
+        @if (products != null && products.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in products)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>@product.Name</td>
+                            <td>@product.Description</td>
+                            <td>$@product.Price.ToString("F2")</td>
+                            <td>@product.ImageUrl</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        <h2 class="mt-4">Stores in Database</h2>
+        @if (stores != null && stores.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var store in stores)
+                    {
+                        <tr>
+                            <td>@store.Id</td>
+                            <td>@store.Name</td>
+                            <td>@store.City</td>
+                            <td>@store.State</td>
+                            <td>@store.Hours</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        <div class="mt-4">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    }
+</div>
+
+@code {
+    private bool isLoading = true;
+    private int productCount;
+    private int storeCount;
+    private List<Product>? products;
+    private List<StoreInfo>? stores;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productCount = await DbContext.Products.CountAsync();
+        storeCount = await DbContext.Stores.CountAsync();
+
+        products = await DbContext.Products.ToListAsync();
+        stores = await DbContext.Stores.ToListAsync();
+
+        isLoading = false;
+    }
+}
