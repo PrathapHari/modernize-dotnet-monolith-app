@@ -1,35 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using eShopLite.StoreFx.Data;
+﻿using eShopLite.StoreFx.Data;
 using eShopLite.StoreFx.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eShopLite.StoreFx.Services
 {
     public interface IStoreService
     {
-        IEnumerable<Product> GetProducts();
-        IEnumerable<StoreInfo> GetStores();
+        Task<List<Product>> GetProductsAsync();
+        Task<List<StoreInfo>> GetStoresAsync();
     }
 
     public class StoreService : IStoreService
     {
-        private readonly IStoreDbContext _context;
+        private readonly StoreDbContext _context;
 
-        public StoreService(IStoreDbContext context)
+        public StoreService(StoreDbContext context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context = context;
         }
 
-        public IEnumerable<Product> GetProducts()
+        public async Task<List<Product>> GetProductsAsync()
         {
-            return _context.Products.ToList();
+            return await _context.Products.ToListAsync();
         }
 
-        public IEnumerable<StoreInfo> GetStores()
+        public async Task<List<StoreInfo>> GetStoresAsync()
         {
-            return _context.Stores.ToList();
+            return await _context.Stores.ToListAsync();
         }
     }
 }

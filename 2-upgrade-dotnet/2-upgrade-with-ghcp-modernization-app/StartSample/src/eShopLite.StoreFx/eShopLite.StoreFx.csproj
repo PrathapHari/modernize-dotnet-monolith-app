@@ -4,46 +4,20 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>eShopLite.StoreFx</RootNamespace>
-    <AssemblyName>eShopLite.StoreFx</AssemblyName>
-    <EnableDefaultContentItems>false</EnableDefaultContentItems>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Keep compatible packages -->
     <PackageReference Include="Autofac" Version="9.0.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
-    <PackageReference Include="EntityFramework" Version="6.5.1" />
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <!-- Map Content to wwwroot for static files -->
-    <Content Include="Content\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>wwwroot\Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </Content>
-    <Content Include="Scripts\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>wwwroot\Scripts\%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </Content>
-    <Content Include="Images\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>wwwroot\Images\%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </Content>
-    <Content Include="favicon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>wwwroot\favicon.ico</Link>
-    </Content>
-    <Content Include="Web.config" />
-    <Content Include="Views\**\*.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Web.config" />
-  </ItemGroup>
+  <!--<ItemGroup>
+    <ProjectReference Include="..\eShopLite.StoreFx.Data\eShopLite.StoreFx.Data.csproj" />
+    <ProjectReference Include="..\eShopLite.StoreFx.Services\eShopLite.StoreFx.Services.csproj" />
+  </ItemGroup>-->
 
 </Project>

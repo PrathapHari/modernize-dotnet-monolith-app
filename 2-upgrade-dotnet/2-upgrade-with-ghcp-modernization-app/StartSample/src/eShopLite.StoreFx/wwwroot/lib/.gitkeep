@@ -1,5 +1,5 @@
-﻿using eShopLite.StoreFx.Models;
 using Microsoft.EntityFrameworkCore;
+using eShopLite.StoreFx.Models;
 
 namespace eShopLite.StoreFx.Data
 {

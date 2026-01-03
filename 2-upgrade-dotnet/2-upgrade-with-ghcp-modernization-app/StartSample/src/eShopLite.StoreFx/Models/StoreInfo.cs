@@ -7,12 +7,12 @@ namespace eShopLite.StoreFx.Models
         [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         [JsonProperty("city")]
-        public string City { get; set; }
+        public string City { get; set; } = string.Empty;
         [JsonProperty("state")]
-        public string State { get; set; }
+        public string State { get; set; } = string.Empty;
         [JsonProperty("hours")]
-        public string Hours { get; set; }
+        public string Hours { get; set; } = string.Empty;
     }
 }

@@ -1,39 +1,58 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@ViewBag.Title - eShopLite</title>
-  <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-  <link rel="stylesheet" href="~/Content/Site.css" />
-  <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eShopLite</title>
+    
+    <!-- Bootstrap CSS from LibMan -->
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    
+    <!-- Custom Site CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-    <div class="container">
-      @Html.ActionLink("eShopLite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-        <ul class="navbar-nav flex-grow-1">
-          <li>@Html.ActionLink("Products", "Products", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-          <li>@Html.ActionLink("Stores", "Stores", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-        </ul>
-      </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home")">🏕️ eShopLite</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Products", "Home")">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Stores", "Home")">Stores</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-  </nav>
-  <div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-      <p>&copy; @DateTime.Now.Year - eShopLite</p>
-    </footer>
-  </div>
 
-  <script src="~/Scripts/jquery-3.7.1.min.js"></script>
-  <script src="~/Scripts/bootstrap.min.js"></script>
-  @RenderSection("scripts", required: false)
+    <footer class="border-top footer text-muted mt-5">
+        <div class="container text-center py-3">
+            &copy; @DateTime.Now.Year - eShopLite - Outdoor Gear & Equipment
+        </div>
+    </footer>
+    
+    <!-- Bootstrap Bundle JS from LibMan -->
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts Section -->
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

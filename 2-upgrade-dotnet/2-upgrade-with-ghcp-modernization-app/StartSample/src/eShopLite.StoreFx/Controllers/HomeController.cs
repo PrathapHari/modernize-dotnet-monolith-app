@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-using eShopLite.StoreFx.Services;
+﻿using eShopLite.StoreFx.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace eShopLite.StoreFx.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IStoreService _service;
+        private readonly IStoreService _storeService;
 
-        public HomeController(IStoreService service)
+        public HomeController(IStoreService storeService)
         {
-            _service = service ?? throw new System.ArgumentNullException(nameof(service));
+            _storeService = storeService;
         }
 
         public IActionResult Index()
@@ -18,22 +17,21 @@ namespace eShopLite.StoreFx.Controllers
             return View();
         }
 
-        public IActionResult Products()
+        public async Task<IActionResult> Products()
         {
-            ViewBag.Message = "This component demonstrates showing products data";
-
-            var products = _service.GetProducts();
-
+            var products = await _storeService.GetProductsAsync();
             return View(products);
         }
 
-        public IActionResult Stores()
+        public async Task<IActionResult> Stores()
         {
-            ViewBag.Message = "This component demonstrates showing stores data";
-
-            var stores = _service.GetStores();
-
+            var stores = await _storeService.GetStoresAsync();
             return View(stores);
+        }
+
+        public IActionResult Error()
+        {
+            return View();
         }
     }
 }

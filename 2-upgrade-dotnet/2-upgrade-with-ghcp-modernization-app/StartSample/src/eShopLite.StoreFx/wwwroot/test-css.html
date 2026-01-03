@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Test</title>
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">CSS Loading Test</h1>
+        
+        <div class="alert alert-info">
+            If you see styled cards below, Bootstrap CSS is working! ?
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 1</h5>
+                        <p class="card-text">This is a test card</p>
+                        <button class="btn btn-primary">Button</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 2</h5>
+                        <p class="card-text">This is a test card</p>
+                        <button class="btn btn-success">Button</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 3</h5>
+                        <p class="card-text">This is a test card</p>
+                        <button class="btn btn-danger">Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check if Bootstrap CSS loaded
+        const testDiv = document.createElement('div');
+        testDiv.className = 'container';
+        document.body.appendChild(testDiv);
+        
+        const styles = window.getComputedStyle(testDiv);
+        const hasBootstrap = styles.maxWidth !== 'none' && styles.maxWidth !== '';
+        
+        const result = document.createElement('div');
+        result.className = hasBootstrap ? 'alert alert-success mt-4' : 'alert alert-danger mt-4';
+        result.innerHTML = hasBootstrap 
+            ? '? Bootstrap CSS is loaded and working!' 
+            : '? Bootstrap CSS is NOT loaded!';
+        document.querySelector('.container').appendChild(result);
+        
+        document.body.removeChild(testDiv);
+        
+        console.log('Bootstrap loaded:', hasBootstrap);
+        console.log('Container max-width:', styles.maxWidth);
+    </script>
+</body>
+</html>
