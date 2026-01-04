@@ -19,6 +19,7 @@ var storeinfo = builder.AddProject<Projects.eShopLite_StoreInfo>("eshoplite-stor
                        .WaitFor(storeinfodb);
 
 builder.AddProject<Projects.eShopLite_Store>("eshoplite-store")
+       .WithExternalHttpEndpoints()
        .WithReference(products)
        .WithReference(storeinfo)
        .WithReference(redis)

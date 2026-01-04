@@ -14,7 +14,7 @@
       "enabled": true,
       "description": "Query your eShopLite.db database",
       "configuration": {
-        "databasePath": "./src/eShopLite.StoreFx/eShopLite.db",
+        "databasePath": "./src/eShopLite.Store/eShopLite.db",
         "readOnly": true
       }
     },

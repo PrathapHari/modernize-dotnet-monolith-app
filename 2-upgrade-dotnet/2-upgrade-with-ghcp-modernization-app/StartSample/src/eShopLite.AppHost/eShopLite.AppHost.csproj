@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
 
@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eShopLite.Products\eShopLite.Products.csproj" />
-    <ProjectReference Include="..\eShopLite.StoreFx\eShopLite.Store.csproj" />
     <ProjectReference Include="..\eShopLite.StoreInfo\eShopLite.StoreInfo.csproj" />
+    <ProjectReference Include="..\eShopLite.Store\eShopLite.Store.csproj" />
   </ItemGroup>
 
 </Project>

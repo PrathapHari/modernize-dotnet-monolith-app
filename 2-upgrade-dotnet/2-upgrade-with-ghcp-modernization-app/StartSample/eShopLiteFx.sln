@@ -5,8 +5,6 @@ VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopLite.Store", "src\eShopLite.StoreFx\eShopLite.Store.csproj", "{0B98C401-4BE6-42B5-896E-B9C52D64BD74}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopLite.Products", "src\eShopLite.Products\eShopLite.Products.csproj", "{1AF273F1-798D-42B2-DA37-BD9E8700B1B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopLite.StoreInfo", "src\eShopLite.StoreInfo\eShopLite.StoreInfo.csproj", "{A3A0C109-57BA-D939-DB4C-A10730A588F8}"
@@ -15,16 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopLite.AppHost", "src\eS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopLite.ServiceDefaults", "src\eShopLite.ServiceDefaults\eShopLite.ServiceDefaults.csproj", "{84630803-5913-1A87-E6F6-A126994CB532}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopLite.Store", "src\eShopLite.Store\eShopLite.Store.csproj", "{D64FB593-1B8B-FD11-1047-2AA16C4F8BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0B98C401-4BE6-42B5-896E-B9C52D64BD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B98C401-4BE6-42B5-896E-B9C52D64BD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B98C401-4BE6-42B5-896E-B9C52D64BD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B98C401-4BE6-42B5-896E-B9C52D64BD74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1AF273F1-798D-42B2-DA37-BD9E8700B1B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1AF273F1-798D-42B2-DA37-BD9E8700B1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AF273F1-798D-42B2-DA37-BD9E8700B1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,12 +37,15 @@ Global
 		{84630803-5913-1A87-E6F6-A126994CB532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84630803-5913-1A87-E6F6-A126994CB532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84630803-5913-1A87-E6F6-A126994CB532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D64FB593-1B8B-FD11-1047-2AA16C4F8BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64FB593-1B8B-FD11-1047-2AA16C4F8BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64FB593-1B8B-FD11-1047-2AA16C4F8BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64FB593-1B8B-FD11-1047-2AA16C4F8BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0B98C401-4BE6-42B5-896E-B9C52D64BD74} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{1AF273F1-798D-42B2-DA37-BD9E8700B1B5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{A3A0C109-57BA-D939-DB4C-A10730A588F8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{D44774FB-DCB3-46D9-9FA2-99529F0C900D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
