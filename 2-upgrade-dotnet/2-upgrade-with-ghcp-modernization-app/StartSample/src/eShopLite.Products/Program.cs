@@ -4,14 +4,22 @@ using eShopLite.Products.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
-// Configure SQLite
-builder.Services.AddDbContext<ProductDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") 
-        ?? "Data Source=Products.db"));
+// Configure PostgreSQL
+builder.AddNpgsqlDbContext<ProductDbContext>("productsdb", configureDbContextOptions: options =>
+{
+    // Enable sensitive data logging in development
+    if (builder.Environment.IsDevelopment())
+    {
+        options.EnableSensitiveDataLogging();
+        options.EnableDetailedErrors();
+    }
+});
 
 // Add CORS for Blazor UI app
 builder.Services.AddCors(options =>
@@ -25,6 +33,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

@@ -4,6 +4,10 @@ using Polly.Extensions.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddRedisOutputCache("redis");
+
+builder.AddServiceDefaults();
+
 // Configure comprehensive logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -18,9 +22,7 @@ builder.Services.AddRazorComponents()
 // Products API Client
 builder.Services.AddHttpClient<ProductApiClient>(client =>
 {
-    var productsApiUrl = builder.Configuration["ApiSettings:ProductsApiUrl"] 
-        ?? "https://localhost:7001";
-    client.BaseAddress = new Uri(productsApiUrl);
+    client.BaseAddress = new Uri("https+http://eshoplite-products");
     client.Timeout = TimeSpan.FromSeconds(30);
 })
 .AddPolicyHandler(GetRetryPolicy())
@@ -29,9 +31,7 @@ builder.Services.AddHttpClient<ProductApiClient>(client =>
 // StoreInfo API Client
 builder.Services.AddHttpClient<StoreInfoApiClient>(client =>
 {
-    var storeInfoApiUrl = builder.Configuration["ApiSettings:StoreInfoApiUrl"] 
-        ?? "https://localhost:7002";
-    client.BaseAddress = new Uri(storeInfoApiUrl);
+    client.BaseAddress = new Uri("https+http://eshoplite-storeinfo");
     client.Timeout = TimeSpan.FromSeconds(30);
 })
 .AddPolicyHandler(GetRetryPolicy())
@@ -39,10 +39,10 @@ builder.Services.AddHttpClient<StoreInfoApiClient>(client =>
 
 // Add health checks
 builder.Services.AddHealthChecks()
-    .AddUrlGroup(new Uri(builder.Configuration["ApiSettings:ProductsApiUrl"] ?? "https://localhost:7001"), 
+    .AddUrlGroup(new Uri("https+http://eshoplite-products"), 
         name: "products-api", 
         timeout: TimeSpan.FromSeconds(5))
-    .AddUrlGroup(new Uri(builder.Configuration["ApiSettings:StoreInfoApiUrl"] ?? "https://localhost:7002"), 
+    .AddUrlGroup(new Uri("https+http://eshoplite-storeinfo"), 
         name: "storeinfo-api", 
         timeout: TimeSpan.FromSeconds(5));
 
@@ -56,6 +56,9 @@ builder.Services.AddResponseCompression(options =>
 builder.Services.AddMemoryCache();
 
 var app = builder.Build();
+app.UseOutputCache();
+
+app.MapDefaultEndpoints();
 
 // Log application startup
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
@@ -63,8 +66,8 @@ logger.LogInformation("========================================");
 logger.LogInformation("eShopLite.Store Application Starting (Microservices)");
 logger.LogInformation("========================================");
 logger.LogInformation("Environment: {Environment}", app.Environment.EnvironmentName);
-logger.LogInformation("Products API: {ProductsApi}", builder.Configuration["ApiSettings:ProductsApiUrl"] ?? "https://localhost:7001");
-logger.LogInformation("StoreInfo API: {StoreInfoApi}", builder.Configuration["ApiSettings:StoreInfoApiUrl"] ?? "https://localhost:7002");
+logger.LogInformation("Products API: {ProductsApi}", new Uri("https+http://eshoplite-products"));
+logger.LogInformation("StoreInfo API: {StoreInfoApi}", new Uri("https+http://eshoplite-storeinfo"));
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

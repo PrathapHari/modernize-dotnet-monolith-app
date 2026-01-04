@@ -1,6 +1,7 @@
 @page "/products"
 @inject ProductApiClient ProductApiClient
 @inject ILogger<Products> Logger
+@attribute [Microsoft.AspNetCore.OutputCaching.OutputCache(Duration = 10)]
 @rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
 
